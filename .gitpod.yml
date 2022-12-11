@@ -5,3 +5,7 @@ vscode:
   extensions:
     - mhutchie.git-graph
     - denoland.vscode-deno
+
+tasks:
+  - name: start
+    command: deno run --check --watch --allow-net=:8000 ./main.ts
