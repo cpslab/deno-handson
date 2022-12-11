@@ -1,0 +1,6 @@
+image: denoland/deno:1.28.3
+
+vscode:
+  extensions:
+    - mhutchie.git-graph
+    - denoland.vscode-deno
