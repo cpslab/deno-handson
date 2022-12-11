@@ -6,7 +6,7 @@
 deno run --check --watch --allow-net=:8000 ./main.ts
 ```
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/cpslab/deno-handson)
 
 GitHub でプライベートのメールアドレスを使っている場合のメール設定コマンドの例
 
