@@ -1,8 +1,20 @@
 import { serve } from "https://deno.land/std@0.167.0/http/server.ts";
 import React from "https://esm.sh/react@18.2.0?pin=v99";
 import { renderToString } from "https://esm.sh/react-dom@18.2.0/server?pin=v99";
+import { App } from "./App.tsx";
+import dist from "./dist.json" assert { type: "json" };
 
-serve((_request) => {
+serve((request) => {
+  const url = new URL(request.url);
+  const now = new Date();
+  if (url.pathname === "/script") {
+    return new Response(dist.scriptContent, {
+      headers: {
+        "content-type": "text/javascript; charset=utf-8",
+      },
+    });
+  }
+
   return new Response(
     "<!doctype html>" + renderToString(
       <html lang="ja">
@@ -33,21 +45,12 @@ serve((_request) => {
         place-content: center;
       }`}
           </style>
-          <script
-            type="module"
-            dangerouslySetInnerHTML={{
-              __html: `const loop = () => {
-  document.body.textContent = "現在時刻: " + new Date().toISOString()
-  requestAnimationFrame(loop);
-}
-loop();
-`,
-            }}
-          >
-          </script>
+          <script type="module" src="/script"></script>
         </head>
         <body>
-          現在時刻: {new Date().toISOString()}
+          <div id="root" data-init-date-value={now.getTime()}>
+            <App initDate={now} />
+          </div>
         </body>
       </html>,
     ),

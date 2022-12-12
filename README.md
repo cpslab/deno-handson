@@ -3,7 +3,13 @@
 実行コマンド
 
 ```ps1
-deno run --check --watch --allow-net=:8000 ./main.ts
+deno run --check --watch --allow-net=:8000 ./main.tsx
+```
+
+クライアント向けwatchビルド
+
+```ps1
+deno run -A ./buildClient.ts
 ```
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/cpslab/deno-handson)
