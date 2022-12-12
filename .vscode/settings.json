@@ -14,8 +14,8 @@
         "type": "node",
         "program": "${workspaceFolder}/main.ts",
         "cwd": "${workspaceFolder}",
-        "runtimeExecutable": "/deno/bin/deno",
-        "runtimeArgs": ["run", "--watch", "--inspect", "--allow-net=:8000"],
+        "runtimeExecutable": "/home/gitpod/.deno/bin/deno",
+        "runtimeArgs": ["run", "--inspect", "--allow-net=:8000"],
         "attachSimplePort": 9229
       }
     ],
