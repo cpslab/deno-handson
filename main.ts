@@ -29,7 +29,7 @@ serve((_request) => {
     </style>
   </head>
   <body>
-    やあ
+    現在時刻: ${new Date().toISOString()}
   </body>
 </html>`,
     {
