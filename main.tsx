@@ -27,12 +27,24 @@ serve((_request) => {
       body {
         height: 100%;
         margin: 0;
-        font-size: 64px;
+        font-size: 16px;
         background: skyblue;
         display: grid;
         place-content: center;
       }`}
           </style>
+          <script
+            type="module"
+            dangerouslySetInnerHTML={{
+              __html: `const loop = () => {
+  document.body.textContent = "現在時刻: " + new Date().toISOString()
+  requestAnimationFrame(loop);
+}
+loop();
+`,
+            }}
+          >
+          </script>
         </head>
         <body>
           現在時刻: {new Date().toISOString()}
