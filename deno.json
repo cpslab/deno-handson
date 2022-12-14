@@ -1,4 +1,9 @@
 {
+  "lint": {
+    "files": {
+      "exclude": ["sample/"]
+    }
+  },
   "compilerOptions": {
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
