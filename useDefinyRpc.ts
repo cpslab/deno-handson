@@ -1,10 +1,10 @@
-import { handleRequest } from "https://raw.githubusercontent.com/narumincho/definy/0b25ff2f004a96153cc0405afb80e09fddd45672/deno-lib/definyRpc/server/definyRpc.ts";
-import { requestObjectToSimpleRequest } from "https://raw.githubusercontent.com/narumincho/definy/0b25ff2f004a96153cc0405afb80e09fddd45672/deno-lib/simpleRequestResponse/simpleRequest.ts";
+import { handleRequest } from "https://raw.githubusercontent.com/narumincho/definy/3e527ebb2bfb17f91ed44ecf76a48f31148d4cb8/deno-lib/definyRpc/server/definyRpc.ts";
+import { requestObjectToSimpleRequest } from "https://raw.githubusercontent.com/narumincho/definy/3e527ebb2bfb17f91ed44ecf76a48f31148d4cb8/deno-lib/simpleRequestResponse/simpleRequest.ts";
 import {
   simpleResponseToResponse,
-} from "https://raw.githubusercontent.com/narumincho/definy/0b25ff2f004a96153cc0405afb80e09fddd45672/deno-lib/simpleRequestResponse/simpleResponse.ts";
+} from "https://raw.githubusercontent.com/narumincho/definy/3e527ebb2bfb17f91ed44ecf76a48f31148d4cb8/deno-lib/simpleRequestResponse/simpleResponse.ts";
 import { serve } from "https://deno.land/std@0.167.0/http/server.ts";
-import { createApiFunction } from "https://raw.githubusercontent.com/narumincho/definy/0b25ff2f004a96153cc0405afb80e09fddd45672/deno-lib/definyRpc/core/apiFunction.ts";
+import { createApiFunction } from "https://raw.githubusercontent.com/narumincho/definy/3e527ebb2bfb17f91ed44ecf76a48f31148d4cb8/deno-lib/definyRpc/core/apiFunction.ts";
 import {
   DefinyRpcTypeInfo,
   Field,
@@ -15,7 +15,8 @@ import {
   String,
   TypeBody,
   Unit,
-} from "https://raw.githubusercontent.com/narumincho/definy/0b25ff2f004a96153cc0405afb80e09fddd45672/deno-lib/definyRpc/core/coreType.ts";
+} from "https://raw.githubusercontent.com/narumincho/definy/3e527ebb2bfb17f91ed44ecf76a48f31148d4cb8/deno-lib/definyRpc/core/coreType.ts";
+import { Account } from "./generated/api/main.ts";
 
 serve(async (request) => {
   const simpleRequest = await requestObjectToSimpleRequest(request);
@@ -42,11 +43,14 @@ serve(async (request) => {
           description: "カスタムAPI Function",
           name: "useCustomType",
           input: Unit.type(),
-          output: String.type(),
+          output: Account.type(),
           isMutation: false,
           needAuthentication: false,
           resolve: () => {
-            return "hi!";
+            return Account.from({
+              name: "ラフィーア",
+              age: 18,
+            });
           },
         }),
       ],
